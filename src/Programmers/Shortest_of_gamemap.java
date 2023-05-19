@@ -24,6 +24,7 @@ public class Shortest_of_gamemap {
         System.out.println(solution(numbers));
     }
 
+    // 메인 메소드 시작
     public static int solution(int[][] map) {
 
         int rowLength = map.length;
@@ -34,7 +35,7 @@ public class Shortest_of_gamemap {
 
         boolean[][] visited = new boolean[rowLength][colLength];
 
-        for (int i = 0; i < rowLength-1; i++) {
+        for (int i = 0; i < rowLength; i++) {
             for (int j = 0; j < colLength; j++) {
                 if (map[i][j] == 0) {
                     visited[i][j] = true;
@@ -42,6 +43,8 @@ public class Shortest_of_gamemap {
 
             }
         }
+
+
 
         Queue<Node> queue = new LinkedList<>();
         visited[0][0] = true;
@@ -65,9 +68,12 @@ public class Shortest_of_gamemap {
 
                 queue.offer(new Node(row, col, node.move + 1));
                 System.out.println(node.toString());
+
+
                 if (row == rowLength - 1 && col == colLength - 1) {
                     min = Math.min(min, node.move + 1);
                 }
+
             }
 
         }
@@ -113,6 +119,8 @@ public class Shortest_of_gamemap {
         answer = bfs(0, 0, maps);
         return answer;
     }
+
+
     static int bfs(int x, int y, int[][] maps) {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{x, y});
