@@ -80,12 +80,12 @@ public class 교점에별만들기 {
             if(p.y < y ) y = p.y;
         }
 
-//        return new point(x,y);
-        // 아래는 람다식으로 한것이다.
+        return new point(x,y);
 
-        return points.stream()
-                     .min(Comparator.comparing(point::getX).thenComparing(point::getY))
-                     .orElse(null);
+        // 아래는 람다식으로 한것이다.
+//        return points.stream()
+//                     .min(Comparator.comparing(point::getX).thenComparing(point::getY))
+//                     .orElse(null);
     }
 
     private point getMaximumPoint(List<point> points) {

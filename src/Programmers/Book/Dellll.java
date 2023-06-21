@@ -2,11 +2,31 @@ package Programmers.Book;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import java.util.Comparator;
 import java.util.List;
 
 public class Dellll {
+
+
+
+//    public static void main(String[] args) {
+//        Dellll dellll = new Dellll();
+//
+//        int[][] line = {{2, -1, 4}, {-2, -1, 4}, {0, -1, 1}, {5, -8, -12}, {5, 8, 12}};
+//
+//        System.out.println(dellll.solution(line).toString());
+//    }
     private static class Point {
         public final long x, y;
+
+        public long getX() {
+            return x;
+        }
+
+        public long getY() {
+            return y;
+        }
 
         private Point(long x, long y) {
             this.x = x;
@@ -28,7 +48,33 @@ public class Dellll {
 
     public Point getMax(List<Point> points) {
 
-        points.stream().map()
+        long x =  points.stream()
+                .mapToLong(Point::getX)
+                .max()
+                .orElse(0L);
+
+        long y =  points.stream()
+                .mapToLong(Point::getY)
+                .max()
+                .orElse(0L);
+
+        return new Point(x, y);
+
+    }
+    public Point getmin(List<Point> points) {
+
+        long x =  points.stream()
+                .mapToLong(Point::getX)
+                .min()
+                .orElse(0L);
+
+        long y =  points.stream()
+                .mapToLong(Point::getY)
+                .min()
+                .orElse(0L);
+
+        return new Point(x, y);
+
     }
 
     ///
@@ -48,8 +94,32 @@ public class Dellll {
             }
         }
 
+        // 담을 배열의 크기를 셋팅한다.
+        int width = (int) (getMax(points).x - getmin(points).x + 1);
+        int height = (int) (getMax(points).y - getmin(points).y + 1);
 
-        return null;
+        char[][] arr = new char[width][height];
+
+        for (char[] row : arr) {
+            Arrays.fill(row,'.');
+        }
+
+
+
+        System.out.println("arr" );
+        // 일반 좌표계에서 해당하는 부분으
+
+        for (Point p : points) {
+            int x = (int) (p.x - getmin(points).x);
+            int y = (int) (getMax(points).y - p.y);
+            arr[y][x] = '*';
+        }
+
+        String[] result = new String[arr.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = new String(arr[i]);
+        }
+        return result;
     }
 
 }
