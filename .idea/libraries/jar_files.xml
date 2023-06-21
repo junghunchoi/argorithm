@@ -2,8 +2,13 @@
   <library name="jar_files">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../../../jar_files.zip!/" />
+      <root url="file://$PROJECT_DIR$/apache-log4j-2.12.4-bin" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/apache-log4j-2.12.4-bin" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/apache-log4j-2.12.4-bin" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/apache-log4j-2.12.4-bin" recursive="false" type="SOURCES" />
   </library>
 </component>
