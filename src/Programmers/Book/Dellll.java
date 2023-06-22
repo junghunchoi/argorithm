@@ -2,21 +2,19 @@ package Programmers.Book;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import java.util.Comparator;
 import java.util.List;
 
 public class Dellll {
 
 
 
-//    public static void main(String[] args) {
-//        Dellll dellll = new Dellll();
-//
-//        int[][] line = {{2, -1, 4}, {-2, -1, 4}, {0, -1, 1}, {5, -8, -12}, {5, 8, 12}};
-//
-//        System.out.println(dellll.solution(line).toString());
-//    }
+    public static void main(String[] args) {
+        Dellll dellll = new Dellll();
+
+        int[][] line = {{2, -1, 4}, {-2, -1, 4}, {0, -1, 1}, {5, -8, -12}, {5, 8, 12}};
+
+        System.out.println(dellll.solution(line).toString());
+    }
     private static class Point {
         public final long x, y;
 
@@ -81,6 +79,8 @@ public class Dellll {
 
     public String[] solution(int[][] line) {
 
+
+
         List<Point> points = new ArrayList<>();
 
         for (int i = 0; i < line.length; i++) {
@@ -106,8 +106,6 @@ public class Dellll {
 
 
 
-        System.out.println("arr" );
-        // 일반 좌표계에서 해당하는 부분으
 
         for (Point p : points) {
             int x = (int) (p.x - getmin(points).x);
@@ -115,10 +113,12 @@ public class Dellll {
             arr[y][x] = '*';
         }
 
+
         String[] result = new String[arr.length];
         for (int i = 0; i < result.length; i++) {
             result[i] = new String(arr[i]);
         }
+
         return result;
     }
 
