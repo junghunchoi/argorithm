@@ -91,6 +91,7 @@ public class Solution {
             int x = (int) (p.x - minimum.x);
             int y = (int) (maximum.y - p.y);
             arr[y][x] = '*';
+
         }
 
         String[] result = new String[arr.length];

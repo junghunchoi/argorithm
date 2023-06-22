@@ -14,6 +14,7 @@ public class Dellll {
         int[][] line = {{2, -1, 4}, {-2, -1, 4}, {0, -1, 1}, {5, -8, -12}, {5, 8, 12}};
 
         System.out.println(dellll.solution(line).toString());
+
     }
     private static class Point {
         public final long x, y;

@@ -11,6 +11,7 @@ public class 삼각달팽이 {
     private static final int[] dy = {1, 0, -1};
 
     public static void main(String[] args) {
+
         System.out.println(solution(4));
 
     }
