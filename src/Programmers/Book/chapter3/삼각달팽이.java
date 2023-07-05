@@ -1,4 +1,4 @@
-package Programmers.Book;
+package Programmers.Book.chapter3;
 
 import java.util.Arrays;
 
@@ -88,8 +88,8 @@ public class 삼각달팽이 {
             int nx = x + dx[d];
             int ny = y + dy[d];
             if (nx == n || ny == n || nx == -1 || ny == -1 || triangle[ny][nx] != 0) {
-                d = (d + 1) % 3;
-                nx = x + dx[d];
+                d = (d + 1) % 3; // 아래(0) 오른쪽(1) 왼쪽위(2)
+                nx = x + dx[d]; // 현재의 위치를 업데이트한다.
                 ny = y + dy[d];
                 if (nx == n || ny == n || nx == -1 || ny == -1 || triangle[ny][nx]
                     != 0) break;
@@ -110,3 +110,4 @@ public class 삼각달팽이 {
     }
 
 }
+

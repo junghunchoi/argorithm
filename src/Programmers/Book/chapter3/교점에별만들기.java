@@ -1,8 +1,7 @@
-package Programmers.Book;
+package Programmers.Book.chapter3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 //https://programmers.co.kr/learn/courses/30/lessons/87377
@@ -23,6 +22,19 @@ public class 교점에별만들기 {
 
     5. 문자열 배열로 변환 후 반환
     */
+
+    //step.1
+    private point intersection(long a1, long b1, long c1, long a2, long b2, long c2) {
+        // 교점 구해서 반환하기
+        // a1x + b1y + c1 = 0 , a2x + b2y + c2 = 0 의 교점을 구하는 공식은 아래와 같다.
+        // 이런 방정식은 참고로 주어지니 알아둘 필요는 없다.
+        double x = (double) (b1 * c2 - b2 * c1) / (a1 * b2 - a2 * b1);
+        double y = (double) (a2 * c1 - a1 * c2) / (a1 * b2 - a2 * b1);
+
+        // 정수로 떨어지지 않으면 리턴
+        if(x % 1 != 0 || y% 1 != 0) return null;
+        return new point((long) x, (long) y);
+    }
 
     public String[] solution(int[][] line) {
 
@@ -103,17 +115,7 @@ public class 교점에별만들기 {
 
     }
 
-    private point intersection(long a1, long b1, long c1, long a2, long b2, long c2) {
-        // 교점 구해서 반환하기
-        // a1x + b1y + c1 = 0 , a2x + b2y + c2 = 0 의 교점을 구하는 공식은 아래와 같다.
-        // 이런 방정식은 참고로 주어지니 알아둘 필요는 없다.
-        double x = (double) (b1 * c2 - b2 * c1) / (a1 * b2 - a2 * b1);
-        double y = (double) (a2 * c1 - a1 * c2) / (a1 * b2 - a2 * b1);
 
-        // 정수로 떨어지지 않으면 리턴
-        if(x % 1 != 0 || y% 1 != 0) return null;
-        return new point((long) x, (long) y);
-    }
 
     private static class point{
 
@@ -130,6 +132,10 @@ public class 교점에별만들기 {
         public point(long x, long y) {
             this.x = x;
             this.y = y;
+        }
+        @Override
+        public String toString() {
+            return "Point{" + "x=" + x + ", y=" + y + '}';
         }
     }
 }
