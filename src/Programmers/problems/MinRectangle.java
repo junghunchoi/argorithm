@@ -1,4 +1,4 @@
-package Programmers;
+package Programmers.problems;
 
 public class MinRectangle {
 
