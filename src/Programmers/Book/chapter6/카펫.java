@@ -1,4 +1,4 @@
-package Programmers.Book.charpter6;
+package Programmers.Book.chapter6;
 
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/42842

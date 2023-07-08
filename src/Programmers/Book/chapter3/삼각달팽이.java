@@ -1,7 +1,5 @@
 package Programmers.Book.chapter3;
 
-import java.util.Arrays;
-
 //https://programmers.co.kr/learn/courses/30/lessons/68645
 //입출력 예) 4	[1,2,9,3,10,8,4,5,6,7]
 public class 삼각달팽이 {
@@ -52,6 +50,7 @@ public class 삼각달팽이 {
                 x-=1;
                 y-=1;
             }
+
             if(y+1==n||arr[y+1][x]!=0) break;
             y+=1;
         }
@@ -64,10 +63,8 @@ public class 삼각달팽이 {
             for (int j = 0; j <= i; j++) {
                 result[index++] = arr[i][j];
             }
-
         }
 
-        Arrays.stream(result).forEach(System.out::println);
 
         return result;
 

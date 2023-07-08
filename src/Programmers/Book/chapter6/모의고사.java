@@ -1,4 +1,4 @@
-package Programmers.Book.charpter6;
+package Programmers.Book.chapter6;
 
 import java.util.stream.IntStream;
 
