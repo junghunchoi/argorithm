@@ -1,9 +1,6 @@
 package Programmers.Book.chapter6;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/42839
@@ -11,6 +8,7 @@ public class 소수찾기 {
 	//1. 앞이 0일경우는 안됨
 	//2. 똑같은 숫자가 존재할 경우 카운트 하지 않음
 
+	int count = 0;
 
 	private Set<Integer> getPrime(int acc, List<Integer> numbers) {
 
@@ -24,8 +22,9 @@ public class 소수찾기 {
 		// 점화식 구현
 		for (int i = 0; i < numbers.size(); i++) {
 
+			System.out.println("i : " + i + " acc : " + acc + "list : " + numbers.toString());
 			int nextAcc = acc * 10 + numbers.get(i);
-			List<Integer> nextNumbers = new ArrayList<>(numbers);
+			List<Integer> nextNumbers = new LinkedList<>(numbers);
 			nextNumbers.remove(i);
 			primes.addAll(getPrime(nextAcc, nextNumbers));
 		}
@@ -62,12 +61,26 @@ public class 소수찾기 {
 		Set<Integer> primes = new HashSet<>();
 		List<Integer> numbers = nums.chars().map(i -> i - '0').boxed().collect(Collectors.toList());
 
-		nums.chars().map(i->i+1).forEach(System.out::println);
 		return getPrime(0, numbers).size();
 
 		/*getPrimes(0, numbers, new boolean[numbers.length], primes);
           return primes.size();
 		* */
 	}
+
+	//
+
+//	private Set<Integer> getPrime1(int acc, List<Integer> numbers) {
+//
+//		HashSet<Integer> set = new HashSet<>();
+//
+//		for (int i = 0; i < numbers.size(); i++) {
+//
+//			int prime =
+//
+//		}
+//
+//		return null;
+//	}
 
 }

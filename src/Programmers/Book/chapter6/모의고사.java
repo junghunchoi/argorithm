@@ -10,9 +10,6 @@ public class 모의고사 {
 
 	static int[] arg = {1, 2, 3, 4, 5};
 
-	public static void main(String[] args) {
-		solution(arg);
-	}
 
 	private static int getPicked(int person, int problem) {
 		int[] rule = supo[person]; // 각 수포자의 값을 배열에 셋팅
@@ -49,5 +46,34 @@ public class 모의고사 {
 				.toArray();
 	}
 
+
+	////////////////
+//	public int getPiecked1(int person) {
+//		// 수포자가 어떤 값을 찍었는가?
+//		//
+//		int[] arr = supo[person];
+//
+//		int picked = 순서
+//
+//		return 0;
+//	}
+//
+//	public int[] solution1(int[] answer) {
+//
+//		int[] result = new int[3];
+//
+//		for (int i = 0; i < supo.length; i++) {
+//			for (int j = 0; j < supo[i].length; j++) {
+//
+//				int n = getPiecked1(j);
+//
+//				if (n==answer[j]) result[i]++;
+//
+//			}
+//
+//		}
+//
+//		return Arrays.stream(result).filter(Comparator.) // 가장 큰
+//	}
 
 }
