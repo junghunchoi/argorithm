@@ -15,7 +15,7 @@ public class Test {
         String[] user_id = {"frodo", "fradi", "crodo", "abc123", "frodoc"};
         String[] banned_id = {"fr*d*", "abc1**"};
         String var1 = "127";
-        int[] arg = {1, 2, 3, 4, 5};
+        int[] arg = {1,3,2,4,2};
 
         Arrays.stream(cons4.solution1(arg)).forEach(System.out::println);
 

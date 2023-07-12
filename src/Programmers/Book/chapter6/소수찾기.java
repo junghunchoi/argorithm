@@ -70,17 +70,31 @@ public class 소수찾기 {
 
 	//
 
-//	private Set<Integer> getPrime1(int acc, List<Integer> numbers) {
-//
-//		HashSet<Integer> set = new HashSet<>();
-//
-//		for (int i = 0; i < numbers.size(); i++) {
-//
-//			int prime =
-//
-//		}
-//
-//		return null;
-//	}
+	private Set<Integer> getPrime1(int acc, List<Integer> numbers) {
+
+		HashSet<Integer> set = new HashSet<>();
+
+		for (int i = 0; i < numbers.size(); i++) {
+
+			int prime  = 0;
+
+		}
+
+		return null;
+	}
+
+	private void getPrimeadd1(int acc, int[] numbers, boolean[] isUsed, Set<Integer> primes) {
+
+		if(isPrime(acc)) primes.add(acc);
+
+		for (int i = 0; i < numbers.length; i++) {
+
+			if(isUsed[i]) continue;
+			int nextAcc = 10 * acc + numbers[i];
+			isUsed[i] = true;
+			getPrimeadd1(nextAcc,numbers,isUsed,primes);
+			isUsed[i] = false;
+		}
+	}
 
 }

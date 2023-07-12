@@ -1,6 +1,5 @@
 package Programmers.Book.chapter6;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/42840
@@ -54,11 +53,12 @@ public class 모의고사 {
 
 	////////////////
 
-	public int getPiecked1(int problem,int[] answer) {
+	public int getPiecked1(int person,int n) { // 횟수와 어떤 수포자인지가 중요하지.
 		// 수포자가 어떤 값을 찍었는가?
-		int getPick = problem% answer.length;
+		// 내게 주어진 정답리스트는 내가 찍는 방법, 정답. 정답은 필요없어.
+		int index = n % supo[person].length;
 
-		return getPick;
+		return supo[person][index];
 	}
 
 	public int[] solution1(int[] answer) {
@@ -67,10 +67,11 @@ public class 모의고사 {
 		int max = 0;
 
 		for (int person = 0; person < supo.length; person++) {
+
 		for (int i = 0; i < answer.length; i++) {
 
 			// 선택한 답이 맞을 경우 corrects 하나 올리기
-			if (answer[i] == getPiecked1(i,answer)) {
+			if (answer[i] == getPiecked1(person,i)) {
 				++corrects[person];
 			}
 
@@ -80,7 +81,10 @@ public class 모의고사 {
 
 		int finalMax = max;
 
-		return Arrays.stream(corrects).filter(i->i== finalMax).toArray();
+		return IntStream.range(0, 3)
+				.filter(i -> corrects[i] == finalMax)
+				.map(i -> i + 1)
+				.toArray();
 	}
 
 }
