@@ -2,19 +2,9 @@ package Programmers.Book.chapter6;
 
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/42842
+//복습x
 public class 카펫 {
-
-    public static void main(String[] args) {
-
-        int brown = 24;
-        int yellow = 24;
-
-        solution(brown, yellow);
-
-
-    }
-
-    public static int[] solution(int brown, int yellow) {
+    public int[] solution(int brown, int yellow) {
         // 가운데 크기
         // 외각 격자 = (w-h-2)*2
         // 내각 격자 = w*h - 외각격자

@@ -1,14 +1,19 @@
 package Programmers.Book.chapter6;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/42840
 public class 모의고사 {
 
+	/*
+	2023.07.12
+	*/
+
 	public static int[][] supo = {{1, 2, 3, 4, 5}, {2, 1, 2, 3, 2, 4, 2, 5},
 			{3, 3, 1, 1, 2, 2, 4, 4, 5, 5}};
 
-	static int[] arg = {1, 2, 3, 4, 5};
+	int[] arg = {1, 2, 3, 4, 5};
 
 
 	private static int getPicked(int person, int problem) {
@@ -48,32 +53,34 @@ public class 모의고사 {
 
 
 	////////////////
-//	public int getPiecked1(int person) {
-//		// 수포자가 어떤 값을 찍었는가?
-//		//
-//		int[] arr = supo[person];
-//
-//		int picked = 순서
-//
-//		return 0;
-//	}
-//
-//	public int[] solution1(int[] answer) {
-//
-//		int[] result = new int[3];
-//
-//		for (int i = 0; i < supo.length; i++) {
-//			for (int j = 0; j < supo[i].length; j++) {
-//
-//				int n = getPiecked1(j);
-//
-//				if (n==answer[j]) result[i]++;
-//
-//			}
-//
-//		}
-//
-//		return Arrays.stream(result).filter(Comparator.) // 가장 큰
-//	}
+
+	public int getPiecked1(int problem,int[] answer) {
+		// 수포자가 어떤 값을 찍었는가?
+		int getPick = problem% answer.length;
+
+		return getPick;
+	}
+
+	public int[] solution1(int[] answer) {
+
+		int[] corrects = new int[supo.length];
+		int max = 0;
+
+		for (int person = 0; person < supo.length; person++) {
+		for (int i = 0; i < answer.length; i++) {
+
+			// 선택한 답이 맞을 경우 corrects 하나 올리기
+			if (answer[i] == getPiecked1(i,answer)) {
+				++corrects[person];
+			}
+
+			}
+			if(corrects[person]>max) max = corrects[person];
+		}
+
+		int finalMax = max;
+
+		return Arrays.stream(corrects).filter(i->i== finalMax).toArray();
+	}
 
 }

@@ -4,7 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/68644
+//복습x
 public class 두개뽑아서더하기 {
+
+
 
 	public int[] solution(int[] numbers) {
 

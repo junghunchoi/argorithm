@@ -4,8 +4,10 @@ package Programmers.Book.chapter7;
 import java.util.Arrays;
 
 public class 가장_큰_수 {
-
-	// 복습은 하루 후, 3일 후 그 주 주말에 무조건 복습을 해야한다.
+	/*
+	2023.07.11
+	2023.07.12
+	*/
 
 	public String solution(int[] arr) {
 
@@ -20,4 +22,6 @@ public class 가장_큰_수 {
 		return Arrays.stream(intToString)
 				.reduce("", (s1, s2) -> s1 + s2);
 	}
+
+
 }

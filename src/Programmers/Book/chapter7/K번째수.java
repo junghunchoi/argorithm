@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 public class K번째수 {
 
+	/*
+	2023.07.12
+	*/
 
 	public int[] solution(int[] array, int[][] command) {
 		int[] answer = new int[command.length];
@@ -21,4 +24,5 @@ public class K번째수 {
 
 		return answer;
 	}
-}
+
+	}
