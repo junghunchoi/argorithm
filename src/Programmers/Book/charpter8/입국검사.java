@@ -19,7 +19,7 @@ public class 입국검사 {
 
 
 			for (int i = 0; i < times.length; i++) {
-				sum += mid / times[i]; // 왜 나눠
+				sum += mid / times[i]; // 총 걸리는 시간 / 심사관 시간 = 주어진 시간동안 해결할 수 있는 심시관별 사람 수
 			}
 
 			System.out.println("left : " + left + " right : " + right + " sum : " + sum);

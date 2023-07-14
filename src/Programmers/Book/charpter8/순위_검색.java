@@ -8,6 +8,18 @@ import java.util.List;
 //https://school.programmers.co.kr/learn/courses/30/lessons/72412
 public class 순위_검색 {
 
+	public static void main(String[] args) {
+
+		순위_검색 cons1 = new 순위_검색();
+
+		String[] info = {"java backend junior pizza 150", "python frontend senior chicken 210", "python frontend senior chicken 150", "cpp backend senior pizza 260", "java backend junior chicken 80", "python backend senior chicken 50"};
+		String[] query = {"java and backend and junior and pizza 100", "python and frontend and senior and chicken 200", "cpp and - and senior and pizza 250", "- and backend and senior and - 150", "- and - and - and chicken 100", "- and - and - and - 150"};
+
+
+		cons1.solution(info, query);
+
+	}
+
 	private static int binarySearch(String key, int score, HashMap<String, List<Integer>> map) {
 
 		List<Integer> list = map.get(key); //
@@ -40,9 +52,13 @@ public class 순위_검색 {
 		}
 
 
+
 		for (String key : map.keySet()) {
 			Collections.sort(map.get(key));
 		}
+
+		System.out.println(map.toString());
+		System.out.println("containkey" + map.get("----"));
 
 		for (int i = 0; i < query.length; i++) {
 			query[i] = query[i].replaceAll(" and ", "");

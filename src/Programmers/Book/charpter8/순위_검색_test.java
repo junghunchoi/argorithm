@@ -36,14 +36,16 @@ public class 순위_검색_test {
 	public void makeCase(int seq , String key, String[] arr ) {
 
 		if (seq == 4) {
-			List<Integer> list = new ArrayList<>();
-			map.put(key, list);
-			map.get(key).add(Integer.parseInt(arr[5]));
+			if (map.containsKey(key)) {
+				List<Integer> list = new ArrayList<>();
+				map.put(key, list);
+			}
+			map.get(key).add(Integer.parseInt(arr[4]));
+			return ;
 		}
 
-
-
-
+		makeCase(seq+1, key+"-",arr);
+		makeCase(seq+1, key+arr[seq],arr);
 
 	}
 

@@ -6,14 +6,9 @@ public class Test {
 		문자열_압축 cons = new 문자열_압축();
 		문자열_내_p와_y의_개수 conspy = new 문자열_내_p와_y의_개수();
 
-		System.out.println(conspy.solution("Pyy"));
-
-
+//		System.out.println(conspy.solution("Pyy"));
 
 //		cons.solution(str);
-
-
-
 	}
 
 
