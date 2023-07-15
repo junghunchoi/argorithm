@@ -28,16 +28,15 @@ public class 모음사전 {
 	}
 
 
-
 	///////
 
 	public List<String> generate1(String word, List<String> words) {
 
 		words.add(word);
 		// 종료조건 - 길이가 5가 되면 끝
-		if(word.length() == 5) return words;
+		if (word.length() == 5) return words;
 
-		for (char c  : CHARS) {
+		for (char c : CHARS) {
 
 			generate1(word + c, words);
 		}

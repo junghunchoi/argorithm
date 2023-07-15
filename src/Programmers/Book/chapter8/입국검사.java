@@ -1,4 +1,4 @@
-package Programmers.Book.chapter8;
+package Programmers.Book.charpter8;
 
 import java.util.Arrays;
 
@@ -14,12 +14,12 @@ public class 입국검사 {
 		long right = (long) n * times[times.length - 1]; // 가장 오래걸리는 심사위원이 모든 사람을 보는 경우
 
 		while (left <= right) {
-			long mid = (right + left) / 2; // 최악이니까 일단 중간값을 셋팅하는거지
+			long mid = (right + left) / 2;
 			long sum = 0; // 몇명의 사람을 심사했는지
 
 
 			for (int i = 0; i < times.length; i++) {
-				sum += mid / times[i]; //
+				sum += mid / times[i]; // 총 걸리는 시간 / 심사관 시간 = 주어진 시간동안 해결할 수 있는 심시관별 사람 수
 			}
 
 			System.out.println("left : " + left + " right : " + right + " sum : " + sum);
@@ -31,8 +31,6 @@ public class 입국검사 {
 				answer = mid;
 			}
 		}
-
-
 		return answer;
 		}
 
