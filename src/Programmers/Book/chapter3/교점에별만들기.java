@@ -7,6 +7,11 @@ import java.util.List;
 //https://programmers.co.kr/learn/courses/30/lessons/87377
 public class 교점에별만들기 {
 
+    /* 복습
+        1) 2023.07.15
+     */
+
+
     /* flow
     1. 모든 직선 쌍에 대해 반복
 
@@ -93,11 +98,6 @@ public class 교점에별만들기 {
         }
 
         return new point(x,y);
-
-        // 아래는 람다식으로 한것이다.
-//        return points.stream()
-//                     .min(Comparator.comparing(point::getX).thenComparing(point::getY))
-//                     .orElse(null);
     }
 
     private point getMaximumPoint(List<point> points) {

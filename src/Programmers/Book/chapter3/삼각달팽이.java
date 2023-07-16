@@ -4,6 +4,10 @@ package Programmers.Book.chapter3;
 //입출력 예) 4	[1,2,9,3,10,8,4,5,6,7]
 public class 삼각달팽이 {
 
+    /* 복습
+        1) 2023.07.15
+     */
+
     // 아래, 오른족 왼쪽위로 이동한다는 가정하에 집합을 만든다.
     private static final int[] dx = {0, 1, -1};
     private static final int[] dy = {1, 0, -1};
@@ -88,8 +92,7 @@ public class 삼각달팽이 {
                 d = (d + 1) % 3; // 아래(0) 오른쪽(1) 왼쪽위(2)
                 nx = x + dx[d]; // 현재의 위치를 업데이트한다.
                 ny = y + dy[d];
-                if (nx == n || ny == n || nx == -1 || ny == -1 || triangle[ny][nx]
-                    != 0) break;
+                if (nx == n || ny == n || nx == -1 || ny == -1 || triangle[ny][nx]!= 0) break;
             }
             x = nx;
             y = ny;
@@ -105,6 +108,7 @@ public class 삼각달팽이 {
 
         return result;
     }
+
 
 }
 

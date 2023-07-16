@@ -1,6 +1,4 @@
 package Programmers.Book.chapter7;
-
-
 import java.util.Arrays;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/12915

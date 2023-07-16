@@ -3,9 +3,14 @@ package Programmers.Book.chapter4;
 import java.util.ArrayList;
 import java.util.List;
 
+//https://school.programmers.co.kr/learn/courses/30/lessons/60057
 public class 문자열_압축 {
 
-    static String str = "ababcdcdababcdcd";
+	public static void main(String[] args) {
+		문자열_압축 cons = new 문자열_압축();
+
+		System.out.println(cons.solution("ababcdcdababcdcd"));
+	}
 
 	private List<String> split(String source, int length) { // 주어진 문자열에 주어진 숫자만큼 짜른다.
 
@@ -23,6 +28,7 @@ public class 문자열_압축 {
 	}
 
 	private int compress(String source, int length) {
+
 		StringBuilder builder = new StringBuilder();
 
 		String last = "";
@@ -31,8 +37,6 @@ public class 문자열_압축 {
 		for (String token : split(source, length)) {
 			if (token.equals(last)) {
 				count++;
-				System.out.println("token : " + token.toString());
-
 			} else {
 				if (count > 1) builder.append(count);
 

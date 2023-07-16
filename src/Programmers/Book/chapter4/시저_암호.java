@@ -1,9 +1,13 @@
 package Programmers.Book.chapter4;
 
+//https://school.programmers.co.kr/learn/courses/30/lessons/12926
 public class 시저_암호 {
+    //알파벳의 갯수는 26개이다.
+    /* 복습
+        1) 2023.07.15
+     */
 
     public static void main(String[] args) {
-
         System.out.println(solution("AB",2));
     }
 
@@ -13,6 +17,7 @@ public class 시저_암호 {
 
         for (char c : s.toCharArray()) {
             builder.append(push(c, n));
+//            builder.append(testpush(c, n));
         }
 
         return builder.toString();
@@ -30,7 +35,6 @@ public class 시저_암호 {
 
         return (char)(offset+position);
     }
-
 
 
 }

@@ -2,6 +2,11 @@ package Programmers.Book.chapter4;
 
 
 //https://programmers.co.kr/learn/courses/30/lessons/12932
+// 복습x
+// 복습x
+// 복습x
+// 복습x
+// 복습x
 public class 자연수_뒤집어_배열만들기 {
 
 

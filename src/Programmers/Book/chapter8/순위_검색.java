@@ -1,4 +1,4 @@
-package Programmers.Book.charpter8;
+package Programmers.Book.chapter8;
 
 import java.util.ArrayList;
 import java.util.Collections;
