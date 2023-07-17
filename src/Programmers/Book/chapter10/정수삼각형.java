@@ -5,7 +5,7 @@ import java.util.Arrays;
 //https://school.programmers.co.kr/learn/courses/30/lessons/43105
 public class 정수삼각형 {
 
-	private final int[][] mem = new int[501][501];
+	private static final int[][] mem = new int[501][501];
 
 	int count = 0;
 
@@ -18,12 +18,10 @@ public class 정수삼각형 {
 	}
 
 	private int max(int x, int y, int[][] triangle) {
-		++count;
 		System.out.println("max("+x+","+ y+")  " + "mem[x][y] : " + mem[x][y]);
 		if (y == triangle.length) return 0;// 끝까지가면 0리턴
 
 		if (mem[x][y] != -1) return mem[x][y]; // x축, y축 값이있으면 해당 부분 리턴
-		System.out.println(count);
 		System.out.println("x : " + x + " y : " + y );
 
 		return mem[x][y] = triangle[y][x] + Math.max( // 없으면
