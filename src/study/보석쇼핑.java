@@ -1,4 +1,4 @@
-package Programmers.Book.chapter11;
+package study;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -8,9 +8,9 @@ public class 보석쇼핑 {
 
 	public static void main(String[] args) {
 
-		보석쇼핑 cons = new 보석쇼핑();
+		Programmers.Book.chapter11.보석쇼핑 cons = new Programmers.Book.chapter11.보석쇼핑();
 
-		String[] gem = {"XYZ", "XYZ", "XYZ"};
+		String[] gem = {"DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"};
 
 		Arrays.stream(cons.solution(gem)).forEach(System.out::println);
 
@@ -18,7 +18,7 @@ public class 보석쇼핑 {
 
 	public int[] solution(String[] gem) {
 		int start = 0;
-		int end = 0;
+		int end = 1;
 
 		int count = new HashSet<>(Arrays.asList(gem)).size();
 
@@ -28,6 +28,7 @@ public class 보석쇼핑 {
 
 		while (true) {
 			checkGem.clear();
+
 			System.out.println("start : " + start + " end : " + end);
 
 			for (int i = start; i <= end; i++) {
@@ -43,20 +44,19 @@ public class 보석쇼핑 {
 				start++;
 			}
 
-			// 마지막 포인터가 끝까지가면 계속 증가시켜야함
+			if (start >= end && end==gem.length-1) break;
+
 			if (end == gem.length-1 ) {
 				start++;
-				continue;
 			}
-
 
 			if(checkGem.size() < count ){
 				end++;
 			}
 
-			if (start == end && end==gem.length-1) break;
+
 		}
-		answer.toString();
+
 		return answer.stream().min(Comparator.comparing(arr -> Math.abs(arr[1] - arr[0]))).map(Arrays::stream).orElse(IntStream.empty()).toArray();
 	}
 }
