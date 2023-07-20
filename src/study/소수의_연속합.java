@@ -4,7 +4,11 @@ package study;
 import java.util.ArrayList;
 import java.util.List;
 
+//https://code-lab1.tistory.com/134
 public class 소수의_연속합 {
+
+	/* 1) 2023.07.20 8분
+	*/
 
 	public static void main(String[] args) {
 
@@ -66,5 +70,51 @@ public class 소수의_연속합 {
 		}
 
 		return true;
+	}
+
+
+	public int addsolution(int n) {
+
+		int start = 0;
+		int end = 1;
+		int count = 0;
+		int sum = 0;
+
+
+		int[] arr = new int[n+1];
+
+		for (int i = 0; i < n; i++) {
+			if(addisPrime(i)) arr[i] = i;
+		}
+
+		while (start < end) {
+
+			int mid = (start + end) / 2;
+
+			for (int i = start; i < end; i++) {
+				sum += arr[i];
+			}
+
+			if(sum<n) end++;
+			else start++;
+		}
+
+
+
+		return 0;
+
+	}
+
+	private boolean addisPrime(int n) {
+
+		if (n==1) return false;
+		if(n==2) return true;
+		if(n%2==0) return false;
+
+		for (int i = 3; i < n; i++) {
+			if(n%i==0) return false;
+		}
+		return true;
+
 	}
 }
