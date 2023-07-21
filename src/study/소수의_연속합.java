@@ -7,14 +7,14 @@ import java.util.List;
 //https://code-lab1.tistory.com/134
 public class 소수의_연속합 {
 
-	/* 1) 2023.07.20 8분
+	/* 1) 2023.07.20 30분
 	*/
 
 	public static void main(String[] args) {
 
 		소수의_연속합 con = new 소수의_연속합();
 
-		System.out.println(con.solution(41));
+		System.out.println(con.addsolution(41));
 
 	}
 
@@ -78,30 +78,40 @@ public class 소수의_연속합 {
 		int start = 0;
 		int end = 1;
 		int count = 0;
-		int sum = 0;
 
 
-		int[] arr = new int[n+1];
 
-		for (int i = 0; i < n; i++) {
-			if(addisPrime(i)) arr[i] = i;
+		List<Integer> arr = new ArrayList<>();
+
+		for (int i = 0; i <= n; i++) {
+			if(addisPrime(i)) arr.add(i);
 		}
 
-		while (start < end) {
+		while (start <= end) {
 
-			int mid = (start + end) / 2;
+			int sum = 0;
+
+//			int mid = (start + end) / 2;
 
 			for (int i = start; i < end; i++) {
-				sum += arr[i];
+				sum += arr.get(i);
 			}
+			System.out.println(arr.toString());
+			System.out.println("start : " + start + " end : " + end + " sum : " + sum);
 
-			if(sum<n) end++;
+			if(sum==n) count++;
+
+
+			if(sum<=n && end != arr.size()) end++;
 			else start++;
+
+//			if(end>arr.size()) break;
+
 		}
 
 
 
-		return 0;
+		return count;
 
 	}
 

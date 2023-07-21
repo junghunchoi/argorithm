@@ -1,62 +1,69 @@
 package study;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/67258
 public class 보석쇼핑 {
 
+	/* 1) 2023.07.21
+
+
+	 */
 	public static void main(String[] args) {
 
-		Programmers.Book.chapter11.보석쇼핑 cons = new Programmers.Book.chapter11.보석쇼핑();
+		보석쇼핑 cons = new 보석쇼핑();
 
 		String[] gem = {"DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"};
 
-		Arrays.stream(cons.solution(gem)).forEach(System.out::println);
+		System.out.println((cons.solution(gem))[0] + "   " + cons.solution(gem)[1]);
 
 	}
 
+	// 가장 짧은 구간을 리턴
 	public int[] solution(String[] gem) {
 		int start = 0;
-		int end = 1;
+		int end = gem.length;
+		int s = 0;
+		int e = 0;
 
 		int count = new HashSet<>(Arrays.asList(gem)).size();
 
 		Set<String> checkGem = new HashSet<>();
-		List<int[]> answer = new ArrayList<>();
+		Map<String, Integer> map = new HashMap<>();
 
-
-		while (true) {
-			checkGem.clear();
-
-			System.out.println("start : " + start + " end : " + end);
-
-			for (int i = start; i <= end; i++) {
-
-				checkGem.add(gem[i]);
-			}
-			System.out.println(checkGem.toString());
-
-			if (checkGem.size() == count) {
-
-				answer.add(new int[]{start+1, end+1});
-
-				start++;
-			}
-
-			if (start >= end && end==gem.length-1) break;
-
-			if (end == gem.length-1 ) {
-				start++;
-			}
-
-			if(checkGem.size() < count ){
-				end++;
-			}
-
-
+		for (String str : gem) {
+			checkGem.add(str);
 		}
 
-		return answer.stream().min(Comparator.comparing(arr -> Math.abs(arr[1] - arr[0]))).map(Arrays::stream).orElse(IntStream.empty()).toArray();
+		for (int i = s; i < e; i++) {
+			map.put(gem[i], map.getOrDefault(gem[i], 0) + 1);
+		}
+
+		while (true) {
+
+			if (e - s < end - start) {
+				start = s;
+				end = e;
+			}
+
+
+			if (map.keySet().size() == checkGem.size()) {
+
+				if (map.get(gem[s]) >= 2) map.put(gem[s], map.get(gem[s]) - 1);
+				else map.remove(gem[s]);
+
+				s++;
+			} else {
+
+				map.put(gem[e], map.getOrDefault(gem[e], 0) + 1);
+				e++;
+			}
+			System.out.println("s : " + s + " e : " + e + " map : " +map.toString());
+
+			// end가 끝까지 갔는데 종류가 몇개 없다? 종료
+			if(e== gem.length-1 &&  map.keySet().size() < checkGem.size())			break;
+		}
+
+		return new int[]{start + 1, end + 1};
 	}
 }
