@@ -6,6 +6,11 @@ import java.util.stream.IntStream;
 //https://school.programmers.co.kr/learn/courses/30/lessons/67258
 public class 보석쇼핑 {
 
+	/* 1) 2023.07.21
+
+
+	 */
+
 	public static void main(String[] args) {
 
 		보석쇼핑 cons = new 보석쇼핑();

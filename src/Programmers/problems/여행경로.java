@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //https://school.programmers.co.kr/learn/courses/30/lessons/43164
 // Category : DFS
 // 일단 여러문제 풀어보고 해결방법을 암기한 후 이해하는게 빠를 것 같아
-public class TripCourse {
+public class 여행경로 {
     static ArrayList<String> list = new ArrayList<>();
     static boolean[] useTickets ;
 

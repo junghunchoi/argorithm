@@ -1,18 +1,28 @@
 package Programmers.Book.chapter6;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/42840
 public class 모의고사 {
 
 	/*
-	2023.07.12
+	1) 2023.07.12
+	2) 2023.07.23 14분
 	*/
 
 	public static int[][] supo = {{1, 2, 3, 4, 5}, {2, 1, 2, 3, 2, 4, 2, 5},
 			{3, 3, 1, 1, 2, 2, 4, 4, 5, 5}};
 
-	int[] arg = {1, 2, 3, 4, 5};
+
+
+	public static void main(String[] args) {
+
+		int[] arg = {1, 2, 3, 4, 5};
+
+	Arrays.stream(addsolution(arg)).forEach(System.out::println);
+
+	}
 
 
 	private static int getPicked(int person, int problem) {
@@ -52,39 +62,31 @@ public class 모의고사 {
 
 
 	////////////////
+	public static int[] addsolution(int[] answer) {
+	// 누가 가장 많이 맞췃는가
+		int[] corrects = new int[3];
 
-	public int getPiecked1(int person,int n) { // 횟수와 어떤 수포자인지가 중요하지.
-		// 수포자가 어떤 값을 찍었는가?
-		// 내게 주어진 정답리스트는 내가 찍는 방법, 정답. 정답은 필요없어.
-		int index = n % supo[person].length;
+		for (int i = 0; i < supo.length-1; i++) {
+			System.out.println(i);
+			for (int j = 0; j < supo[i].length-1; j++) {
+				if(answer[i] == supo[i][j% answer.length]) corrects[i]++;
+			}
+		}
 
-		return supo[person][index];
-	}
-
-	public int[] solution1(int[] answer) {
-
-		int[] corrects = new int[supo.length];
 		int max = 0;
 
-		for (int person = 0; person < supo.length; person++) {
-
-		for (int i = 0; i < answer.length; i++) {
-
-			// 선택한 답이 맞을 경우 corrects 하나 올리기
-			if (answer[i] == getPiecked1(person,i)) {
-				++corrects[person];
-			}
-
-			}
-			if(corrects[person]>max) max = corrects[person];
+		for (int checkMax : corrects) {
+			max = Math.max(checkMax, max);
 		}
 
 		int finalMax = max;
 
-		return IntStream.range(0, 3)
-				.filter(i -> corrects[i] == finalMax)
-				.map(i -> i + 1)
+		return Arrays.stream(corrects)
+				.filter(s -> corrects[s] == finalMax)
+				.map(s->s+1)
 				.toArray();
+
 	}
+
 
 }

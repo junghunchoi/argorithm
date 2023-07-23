@@ -1,67 +1,90 @@
 package Programmers.Book.chapter6;
 
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/67257
 public class 수식의_최대화 {
 
-//    시간 복잡도가 바뀐다.
-//    rraylist를 사용할 경우 o(n)이 걸리지
-//    t를 사용할 경우 o(1)이 사용된다.
+	/* 1) 2023.07.23 40분
+
+
+	 */
 
 	private static final String[][] precedences = {"+-*".split(""), "+*-".split(""),
 			"-+*".split(""), "-*+".split(""), "*+-".split(""), "*-+".split(""),};
 
-	private long calculate(long lhs, long rhs, String op) {
-		switch (op) {
-			case "+":
-				return lhs + rhs;
-			case "-":
-				return lhs - rhs;
-			case "*":
-				return lhs * rhs;
-			default:
-				throw new IllegalArgumentException("Invalid operator: " + op);
+	public static void main(String[] args) {
+		수식의_최대화 con = new 수식의_최대화();
+
+		int num = -20000;
+
+		System.out.println(con.solution("100-200*300-500+20"));
+
+	}
+
+
+	public int solution(String str) {
+		int answer = 0;
+
+		StringTokenizer token = new StringTokenizer(str, "+-*",true);
+		List<String> list = new LinkedList<>();
+
+		while (token.hasMoreTokens()) {
+			list.add(token.nextToken());
+		}
+
+		for (int i = 0; i < precedences.length-1; i++) {
+			// 연산자 순서대로 계산하고 계산한 값을 넣어야함
+			// 순서대로?
+			answer = Math.max(answer, calculate(list, precedences[i]));
+
+		}
+
+		// 우선 순위대로
+		return answer;
+	}
+
+	private int calculate(int num1, int num2, String delim) {
+
+		switch (delim) {
+			case "+" : return num1+num2;
+			case "-" : return num1-num2;
+			case "*" : return num1*num2;
+			default:throw  new IllegalArgumentException("이상한 연산자");
 		}
 	}
 
-	private long calculate(List<String> tokens, String[] precedence) {
-		for (String op : precedence) {
-			for (int i = 0; i < tokens.size(); i++) {
-				System.out.println("op" + op + " tokens : " + tokens.toString());
-				if (tokens.get(i).equals(op)) {
-					long lhs = Long.parseLong(tokens.get(i - 1));
-					long rhs = Long.parseLong(tokens.get(i + 1));
-					long result = calculate(lhs, rhs, op);
-					tokens.remove(i - 1); // 연산자 앞 숫자
-					tokens.remove(i - 1); // 연산자
-					tokens.remove(i - 1); // 연산자 뒤 숫자
-					tokens.add(i - 1, String.valueOf(result)); // 계산한 숫자 추가
-					i -= 2; // 3개를 뺏지만 하나를 더했으니 2개 뺸다.
+	private int calculate(List<String> list, String[] procedure) {
+
+
+		// 연산자 배열을 순회하긴 해야해.
+		for (String operator : procedure) {
+//			int index = list.indexOf(s);
+
+			for (int i = 0; i < list.size()-1; i++) {
+				if (list.get(i)
+						.equals(operator)) {
+					int num1 = Integer.parseInt(list.get(i - 1));
+					int num2 = Integer.parseInt(list.get(i + 1));
+					String calcNum = String.valueOf(calculate(num1, num2, list.get(i)));
+
+					System.out.println(" i : " + i + " list : " + list.toString()) ;
+					list.remove(i - 1);
+					list.remove(i-1 );
+					list.remove(i -1);
+					list.add(i - 1, calcNum);
+					i -= 2;
 				}
+				
 			}
-		}
-		return Long.parseLong(tokens.get(0));
-	}
 
-	public long solution(String expression) {
-		StringTokenizer tokenizer = new StringTokenizer(expression, "+-*", true);
-		List<String> tokens = new ArrayList<>();
-		while (tokenizer.hasMoreTokens()) {
-			tokens.add(tokenizer.nextToken());
+
 		}
 
-		long max = 0;
-		for (String[] precedence : precedences) {
-			long value = Math.abs(calculate(new ArrayList<>(tokens), precedence));
-			if (value > max) {
-				max = value;
-			}
-		}
-		return max;
+		return Integer.parseInt(list.get(0));
 	}
 }
 
