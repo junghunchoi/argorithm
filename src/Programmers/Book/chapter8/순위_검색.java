@@ -8,6 +8,10 @@ import java.util.List;
 //https://school.programmers.co.kr/learn/courses/30/lessons/72412
 public class 순위_검색 {
 
+	/* 2023.07.24 실패
+
+	 */
+
 	public static void main(String[] args) {
 
 		순위_검색 cons1 = new 순위_검색();
@@ -16,14 +20,14 @@ public class 순위_검색 {
 		String[] query = {"java and backend and junior and pizza 100", "python and frontend and senior and chicken 200", "cpp and - and senior and pizza 250", "- and backend and senior and - 150", "- and - and - and chicken 100", "- and - and - and - 150"};
 
 
-		cons1.solution(info, query);
+		cons1.solution(info, query); //1,1,1,1,2,4 나와야함
 
 	}
 
 	private static int binarySearch(String key, int score, HashMap<String, List<Integer>> map) {
 
 		List<Integer> list = map.get(key); //
-		System.out.println("binary => "+ list.toString());
+		System.out.println("binary => " + list.toString());
 
 		int start = 0;
 		int end = list.size() - 1;
@@ -36,6 +40,21 @@ public class 순위_검색 {
 
 		// key에 해당하는 점수의 총 개수 - 점수보다 크거나 같은 처음 인덱스
 		return list.size() - start;
+	}
+
+	private void makeCase(String[] arr, String str, int cnt, HashMap<String, List<Integer>> map) {
+
+		if (cnt == 4) { // 4칸 만들어졌으면 map에 삽입을 해야지
+			if (!map.containsKey(str)) { //
+				List<Integer> list = new ArrayList<>();
+				map.put(str, list);
+			}
+			map.get(str).add(Integer.parseInt(arr[4]));
+			return;
+		}
+
+		makeCase(arr, str + "-", cnt + 1, map);
+		makeCase(arr, str + arr[cnt], cnt + 1, map);
 	}
 
 	public int[] solution(String[] info, String[] query) {
@@ -52,7 +71,6 @@ public class 순위_검색 {
 		}
 
 
-
 		for (String key : map.keySet()) {
 			Collections.sort(map.get(key));
 		}
@@ -60,28 +78,66 @@ public class 순위_검색 {
 		System.out.println(map.toString());
 		System.out.println("containkey" + map.get("----"));
 
+		// 질의별로 돌면서 얼마나 들어있는지 체크
 		for (int i = 0; i < query.length; i++) {
 			query[i] = query[i].replaceAll(" and ", "");
 			String[] strings = query[i].split(" ");
-			System.out.println("key : "+ strings[0]);
+			System.out.println("key : " + strings[0]);
 			answer[i] = map.containsKey(strings[0]) ? binarySearch(strings[0], Integer.parseInt(strings[1]), map) : 0; // 키가 포함되어 있을 때 아예 해당되지 않는 경우는 0을 반환
 		}
 
 		return answer;
 	}
 
-	private void makeCase(String[] arr, String str, int cnt, HashMap<String, List<Integer>> map) {
 
-		if (cnt == 4) { // 4칸 만들어졌으면 map에 삽입을 해야지
-			if (!map.containsKey(str)) { //
-				List<Integer> list = new ArrayList<>();
-				map.put(str, list);
-			}
+
+	private static int binarySearch1(String key, int score, HashMap<String, List<Integer>> map) {
+		int count = 0;
+
+		// map 의 key가 key에 해당 되면
+		// 점수보다 높으면 올리는거지
+
+		return count;
+	}
+
+	private void makeCase1(String[] arr, String str, int cnt, HashMap<String, List<Integer>> map) {
+		// 하나씩 더해서 계속 호출한다.
+		if (cnt == 4) {
+
+			List<Integer> list = new ArrayList<>();
+
+			map.put(str, list);
+
 			map.get(str).add(Integer.parseInt(arr[4]));
+
 			return;
 		}
 
-		makeCase(arr, str + "-", cnt + 1, map);
-		makeCase(arr, str + arr[cnt], cnt + 1, map);
+		makeCase1(arr, str + arr[cnt], cnt + 1, map);
+		makeCase1(arr, str + "-", cnt + 1, map);
+
+
+	}
+
+	public int[] solution1(String[] info, String[] query) {
+
+		HashMap<String, List<Integer>> map = new HashMap<>();
+		List<String> caseList = new ArrayList<>();
+
+		// 경우의 수를 만든다.
+		for (String s : info) {
+			makeCase1(s.split(" "), "", 0, map);
+
+		}
+
+		// 질의의 값을 탐색하기 쉽게 변경한다.
+		for (int i = 0; i < query.length; i++) {
+			query[i] = query[i].replaceAll(" and ", "");
+		}
+
+
+
+		return null;
+
 	}
 }

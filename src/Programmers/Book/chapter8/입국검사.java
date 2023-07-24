@@ -5,7 +5,17 @@ import java.util.Arrays;
 //https://school.programmers.co.kr/learn/courses/30/lessons/43238
 public class 입국검사 {
 
-	public long solution(int n, int[] times) { // 대기자 , 심사원별 걸리는 시간.
+	/* 2023.07.24
+
+	 */
+
+	public static void main(String[] args) {
+
+		System.out.println(solution(6, new int[]{7, 10})); // 28
+
+	}
+
+	public static long solution(int n, int[] times) { // 대기자 , 심사원별 걸리는 시간.
 
 		long answer = 0;
 		Arrays.sort(times);
@@ -33,6 +43,7 @@ public class 입국검사 {
 		}
 		return answer;
 		}
+
 
 	}
 
