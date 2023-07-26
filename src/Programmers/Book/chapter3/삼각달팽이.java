@@ -6,6 +6,7 @@ public class 삼각달팽이 {
 
     /* 복습
         1) 2023.07.15
+        2) 2023.07.26
      */
 
     // 아래, 오른족 왼쪽위로 이동한다는 가정하에 집합을 만든다.
@@ -14,7 +15,8 @@ public class 삼각달팽이 {
 
     public static void main(String[] args) {
 
-        System.out.println(solution(4));
+//        System.out.println(solution(4));
+
 
     }
 

@@ -5,6 +5,10 @@ import java.util.Arrays;
 //https://school.programmers.co.kr/learn/courses/30/lessons/43105
 public class 정수삼각형 {
 
+	/* 1) 2023.07.26
+
+	 */
+
 	private static final int[][] mem = new int[501][501];
 
 	int count = 0;
@@ -15,10 +19,17 @@ public class 정수삼각형 {
 
 		System.out.println(cons.solution(new int[][]{{7}, {3, 8}, {8, 1, 0}, {2, 7, 4, 4}, {4, 5, 2, 6, 5}}));
 
+		for (int i = 0; i < mem.length; i++) {
+			for (int j = 0; j < mem.length; j++) {
+				if (mem[i][j] == -1) continue;
+				System.out.println("i : " + i + " j : " + j + " value : " + mem[i][j]);
+			}
+		}
+
 	}
 
 	private int max(int x, int y, int[][] triangle) {
-		System.out.println("max("+x+","+ y+")  " + "mem[x][y] : " + mem[x][y]);
+		System.out.println("max("+x+","+ y+")  " + "mem[x][y] : " + mem[x][y] );
 		if (y == triangle.length) return 0;// 끝까지가면 0리턴
 
 		if (mem[x][y] != -1) return mem[x][y]; // x축, y축 값이있으면 해당 부분 리턴
@@ -36,4 +47,8 @@ public class 정수삼각형 {
 
 		return max(0, 0, triangle);
 	}
+
+
+
+
 }
