@@ -1,5 +1,7 @@
 package Programmers.Book.chapter11;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/42892
@@ -11,9 +13,28 @@ public class 길_찾기_게임 {
 	}
 
 
-	public int[] solution(int[][] arr) {
+	public int[][] solution(int[][] nodeInfo) {
 
-		return null;
+		Node[] nodes = new Node[nodeInfo.length];
+		for (int i = 0; i < nodes.length; i++) {
+			nodes[i] = new Node(i + 1, nodeInfo[i][0], nodeInfo[i][1]);
+		}
+
+
+		Arrays.sort(nodes, (a, b) -> b.y - a.y);
+
+		Node root = constructTree(nodes);
+
+		List<Integer> preorder = new ArrayList<>();
+		pre(root, preorder);
+
+		List<Integer> postorder = new ArrayList<>();
+		post(root, postorder);
+
+		return new int[][]{
+				preorder.stream().mapToInt(Integer::intValue).toArray(),
+				postorder.stream().mapToInt(Integer::intValue).toArray(),
+		};
 	}
 
 	private Node constructTree(Node[] nodes) {
@@ -38,8 +59,17 @@ public class 길_찾기_게임 {
 		if(node==null) return;
 
 		visits.add(node.value);
+		pre(node.left, visits);
+		pre(node.right, visits);
+	}
 
-		pre();
+	private void post(Node node, List<Integer> visits) {
+		if(node==null) return;
+
+		visits.add(node.value);
+		post(node.left, visits);
+		post(node.right, visits);
+
 	}
 	private static class Node{
 		public final int value;
