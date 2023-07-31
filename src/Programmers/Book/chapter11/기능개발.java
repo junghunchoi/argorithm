@@ -1,17 +1,16 @@
 package Programmers.Book.chapter11;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/42586
 public class 기능개발 {
 
 	public static void main(String[] args) {
 
-		Arrays.stream(solution(new int[]{95, 90, 99, 99, 80, 99}, new int[]{1, 1, 1, 1, 1, 1})).forEach(System.out::println);//1,3,2
+		// 앞의 기능이 먼저 구현이 되면 빼기
+		Arrays.stream(solution(new int[]{95, 90, 99, 99, 80, 99}, new int[]{1, 1, 1, 1, 1, 1})) // 5 10 1 1 20 1
+				.forEach(System.out::println);//1,3,2
 
 	}
 
@@ -34,6 +33,8 @@ public class 기능개발 {
 				arrayList.add(queue.size());
 				queue.clear();
 			}
+
+
 			queue.offer(day);
 
 
@@ -42,4 +43,6 @@ public class 기능개발 {
 		return arrayList.stream().mapToInt(Integer::intValue).toArray();
 
 	}
+
+
 }
