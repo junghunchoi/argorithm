@@ -8,11 +8,13 @@ public class 순위 {
 	// 2차원 배열에 승패를 기록한 후 기록된 데이터를 바탕으로 문제를 푼다.
 
 	public static void main(String[] args) {
+
 		순위 con = new 순위();
+
 		int[][] arr = {{4, 3}, {4, 2}, {3, 2}, {1, 2}, {2, 5}};
 
 
-		System.out.println(con.solution(5,arr));
+		System.out.println(con.solution(5, arr));
 
 	}
 
@@ -22,16 +24,12 @@ public class 순위 {
 		int count = 1;
 
 		for (int v = 0; v < graph[u].length; v++) {
-
 			// u와v는 연결되어 있고 이전에 방문한적 없으면 진행할 수 있음
-			if(!graph[u][v]||isvisted[v]) continue;
+			if (!graph[u][v] || isvisted[v]) continue;
 			isvisted[v] = true;
 			count += countForward(v, graph, isvisted);
 		}
-
-
 		return count;
-
 	}
 
 	// 진경우를 확인하기 위한 메소드
@@ -40,16 +38,13 @@ public class 순위 {
 		int count = 1;
 
 		for (int v = 0; v < graph[u].length; v++) {
-
 			// u와v는 연결되어 있고 이전에 방문한적 없으면 진행할 수 있음
-			if(!graph[v][u]||isvisted[v]) continue;
+			if (!graph[v][u] || isvisted[v]) continue;
 			isvisted[v] = true;
 			count += countForward(v, graph, isvisted);
 		}
 
-
 		return count;
-
 	}
 
 	public int solution(int n, int[][] result) {
@@ -57,8 +52,8 @@ public class 순위 {
 		boolean[][] graph = new boolean[n][n];
 
 		for (int[] edge : result) {
-			int u = edge[0] -1;
-			int v = edge[1] -1;
+			int u = edge[0] - 1;
+			int v = edge[1] - 1;
 			graph[u][v] = true;
 
 		}
@@ -66,8 +61,8 @@ public class 순위 {
 		int count = 0;
 
 		for (int u = 0; u < n; u++) {
-			int wins = countForward(u, graph, new boolean[n])-1;
-			int lose = countBackward(u, graph, new boolean[n])-1;
+			int wins = countForward(u, graph, new boolean[n]) - 1;
+			int lose = countBackward(u, graph, new boolean[n]) - 1;
 
 			if (wins + lose + 1 == n) {
 				count++;

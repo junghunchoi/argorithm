@@ -3,8 +3,10 @@ package Programmers.Book.chapter11;
 
 import java.util.Stack;
 
+//https://school.programmers.co.kr/learn/courses/30/lessons/42584
 public class 주식가격 {
 
+	// 다 풀면 리스트에서 삭제.
 
 	public int[] solution(int[] prices) {
 		int[] answer = new int[prices.length];

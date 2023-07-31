@@ -1,12 +1,14 @@
 package Programmers.Book.chapter11;
 
-import java.util.*;
-import java.util.stream.IntStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/67258
 public class 보석쇼핑 {
 
-	/* 1) 2023.07.21
+	/* 1)
 
 
 	 */
@@ -24,44 +26,34 @@ public class 보석쇼핑 {
 	public int[] solution(String[] gem) {
 		int start = 0;
 		int end = 0;
+		int s = 0;
+		int e = 0;
 
 		int count = new HashSet<>(Arrays.asList(gem)).size();
 
-		Set<String> checkGem = new HashSet<>();
-		List<int[]> answer = new ArrayList<>();
+		Map<String, Integer> map = new HashMap<>();
+
+		map.put(gem[s], 1);
 
 
-		while (true) {
-			checkGem.clear();
-			System.out.println("start : " + start + " end : " + end);
+		while (start < end) {
 
-			for (int i = start; i <= end; i++) {
-
-				checkGem.add(gem[i]);
-			}
-			System.out.println(checkGem.toString());
-
-			if (checkGem.size() == count) {
-
-				answer.add(new int[]{start+1, end+1});
-
-				start++;
+			if(map.keySet().size()==count) {
 			}
 
-			// 마지막 포인터가 끝까지가면 계속 증가시켜야함
-			if (end == gem.length-1 ) {
-				start++;
-				continue;
+			map.put(gem[e], map.get(gem[e]) - 1);
+
+			if (map.keySet()
+					.size() < count) {
+				e++;
 			}
 
-
-			if(checkGem.size() < count ){
-				end++;
-			}
-
-			if (start == end && end==gem.length-1) break;
 		}
-		answer.toString();
-		return answer.stream().min(Comparator.comparing(arr -> Math.abs(arr[1] - arr[0]))).map(Arrays::stream).orElse(IntStream.empty()).toArray();
+
+		return new int[]{start + 1, end + 1};
 	}
-}
+
+
+
+	}
+
