@@ -18,58 +18,54 @@ public class 순위 {
 
 	}
 
-	// 이긴 선수의 수를 세기 위한 화살표 방향으로 진행하며 만나는 노드의 갯수 확인
-	private int countForward(int u, boolean[][] graph, boolean[] isvisted) {
-
+	private int countForward(int u, boolean[][] graph, boolean[] isVisited) {
 		int count = 1;
 
 		for (int v = 0; v < graph[u].length; v++) {
-			// u와v는 연결되어 있고 이전에 방문한적 없으면 진행할 수 있음
-			if (!graph[u][v] || isvisted[v]) continue;
-			isvisted[v] = true;
-			count += countForward(v, graph, isvisted);
-		}
-		return count;
-	}
-
-	// 진경우를 확인하기 위한 메소드
-	private int countBackward(int u, boolean[][] graph, boolean[] isvisted) {
-
-		int count = 1;
-
-		for (int v = 0; v < graph[u].length; v++) {
-			// u와v는 연결되어 있고 이전에 방문한적 없으면 진행할 수 있음
-			if (!graph[v][u] || isvisted[v]) continue;
-			isvisted[v] = true;
-			count += countForward(v, graph, isvisted);
+			if (!graph[u][v] || isVisited[v]) continue;
+			isVisited[v] = true;
+			count += countForward(v, graph, isVisited);
 		}
 
 		return count;
 	}
 
-	public int solution(int n, int[][] result) {
+	// 진거를 확인해
+	private int countBackward(int u, boolean[][] graph, boolean[] isVisited) {
+		int count = 1;
 
+		for (int v = 0; v < graph.length; v++) {
+//			if(u==4) System.out.println("v : " + v + " isvisit : " + isVisited[v] + " count : " + count );
+			if (!graph[v][u] || isVisited[v]) continue;
+			isVisited[v] = true;
+			count += countBackward(v, graph, isVisited); // 0번째에서
+		}
+
+		return count;
+	}
+
+	public int solution(int n, int[][] results) {
 		boolean[][] graph = new boolean[n][n];
-
-		for (int[] edge : result) {
+		for (int[] edge : results) {
 			int u = edge[0] - 1;
 			int v = edge[1] - 1;
 			graph[u][v] = true;
-
 		}
 
 		int count = 0;
-
 		for (int u = 0; u < n; u++) {
 			int wins = countForward(u, graph, new boolean[n]) - 1;
-			int lose = countBackward(u, graph, new boolean[n]) - 1;
+			int loses = countBackward(u, graph, new boolean[n]) - 1;
 
-			if (wins + lose + 1 == n) {
+			System.out.println(" u : " +u + " win : " + wins + " loses : " + loses);
+			if (wins + loses + 1 == n) {
 				count++;
 			}
 		}
 
 		System.out.println(Arrays.deepToString(graph));
+
+
 		return count;
 	}
 }
