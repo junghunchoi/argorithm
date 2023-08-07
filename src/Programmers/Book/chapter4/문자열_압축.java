@@ -1,6 +1,7 @@
 package Programmers.Book.chapter4;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/60057
@@ -45,7 +46,7 @@ public class 문자열_압축 {
 				count = 1;
 			}
 		}
-		System.out.println("builder : " + builder.toString());
+//		System.out.println("builder : " + builder.toString());
 
 		if (count > 1) builder.append(count);
 		builder.append(last);
@@ -67,5 +68,26 @@ public class 문자열_압축 {
 
 		}
 		return min;
+	}
+
+	private int compress1(String source, int length) {
+		//길이별로 압축한다.
+
+		List<String> list = new ArrayList<>();
+
+		StringBuilder sb = new StringBuilder();
+
+		// 있으면 그 앞에숫자를 곱하고.
+
+
+
+
+		return 0;
+	}
+
+	private List<String> split1(String source, int length) {
+
+
+		return Arrays.asList("s");
 	}
 }
