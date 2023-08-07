@@ -16,17 +16,6 @@ public class 주식가격 {
 		int[] answer = new int[prices.length];
 		Stack<Integer> stack = new Stack<>();
 
-		/*
-		1. 주어진 조건을 어떻게 활용하느냐 (조건 - 플로우 - 머리 또는 손으로 식 작성)
-		2. 알고리즘식을 어떻게 작성하는가. 시작 - 중간 - 종료
-		3. 중간에 꼬였을 경우 어디서 꼬엿는지 확인하고 적절한 조치 필요.
-		 */
-
-		/*  배열별 값의 크기를 비교, 인덱스 값을 통해 정답에 값을 리턴한다.
-		*   종료) 스택이 비어 있지 않다.
-		*
-		* */
-
 
 		for (int i = 0; i < prices.length; i++) {
 			while (!stack.isEmpty() && prices[stack.peek()] > prices[i]) { // 스택 제일 앞에 쌓인 것보다 작으면 떨어진거니까
@@ -46,7 +35,6 @@ public class 주식가격 {
 			answer[index] = prices.length - index - 1; //
 		}
 
-//				System.out.println(Arrays.toString(answer));
 		return answer;
 	}
 
