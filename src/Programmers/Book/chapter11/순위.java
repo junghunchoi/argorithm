@@ -34,9 +34,19 @@ public class 순위 {
 	private int countBackward(int u, boolean[][] graph, boolean[] isVisited) {
 		int count = 1;
 
-		for (int v = 0; v < graph.length; v++) {
-//			if(u==4) System.out.println("v : " + v + " isvisit : " + isVisited[v] + " count : " + count );
+		for (int v = 0; v < graph.length; v++) { // 그래프의 갯수만큼 순회
+
+			if(u==4){
+				System.out.println(Arrays.toString(isVisited));
+				System.out.println("v : " + v + " isvisit : " + isVisited[v] + " count : " + count );
+			}
+
+
 			if (!graph[v][u] || isVisited[v]) continue;
+			if(u==4){
+				System.out.println(Arrays.toString(isVisited));
+				System.out.println("v : " + v + " isvisit : " + isVisited[v] + " count : " + count );
+			}
 			isVisited[v] = true;
 			count += countBackward(v, graph, isVisited); // 0번째에서
 		}
@@ -53,17 +63,18 @@ public class 순위 {
 		}
 
 		int count = 0;
+
 		for (int u = 0; u < n; u++) {
 			int wins = countForward(u, graph, new boolean[n]) - 1;
 			int loses = countBackward(u, graph, new boolean[n]) - 1;
 
-			System.out.println(" u : " +u + " win : " + wins + " loses : " + loses);
+//			System.out.println(" u : " +u + " win : " + wins + " loses : " + loses);
 			if (wins + loses + 1 == n) {
 				count++;
 			}
 		}
 
-		System.out.println(Arrays.deepToString(graph));
+//		System.out.println(Arrays.deepToString(graph));
 
 
 		return count;
