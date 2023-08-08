@@ -5,6 +5,7 @@ public class 이상한_문자_만들기 {
 
 	  /* 복습
         1) 2023.07.15
+        2) 2023.08.08
      */
 
 
@@ -14,7 +15,7 @@ public class 이상한_문자_만들기 {
 
 //		System.out.println(solution(str));
 
-		System.out.println(testSolution(str));
+//		System.out.println(testSolution(str));
 	}
 
 	public static String solution(String arg) {
@@ -41,32 +42,5 @@ public class 이상한_문자_만들기 {
 
 		return builder.toString();
 	}
-
-	public static String testSolution(String s) {
-
-		boolean isCap = true;
-
-		StringBuilder builder = new StringBuilder();
-
-		for (char c : s.toCharArray()) {
-			if (!Character.isAlphabetic(c)) {
-				builder.append(c);
-				isCap = true;
-				continue;
-			}
-
-			if (isCap) {
-				builder.append(Character.toUpperCase(c));
-				isCap = false;
-			}else {
-				builder.append(c);
-				isCap = true;
-			}
-
-		}
-
-		return builder.toString();
-	}
-
 
 }
