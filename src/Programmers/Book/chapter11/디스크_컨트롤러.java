@@ -4,18 +4,61 @@ import java.util.*;
 
 // https://school.programmers.co.kr/learn/courses/30/lessons/42627
 public class 디스크_컨트롤러 {
-
 	/*
 	1) 봤지만 못풀었다.
 	 */
 	public static void main(String[] args) {
 
-		System.out.println(solution(new int[][]{{0,3},{1,9},{2,6}})); // 9
+		System.out.println(solution1(new int[][]{{0,3},{1,9},{2,6}})); // 9
 
 	}
+//
+//	public static int solution(int[][] rawJobs) {
+//		Job[] jobs = new Job[rawJobs.length];
+//		for (int i = 0; i < jobs.length; i++) {
+//			jobs[i] = new Job(rawJobs[i][0], rawJobs[i][1]);
+//		}
+//		// 문제조건에서 먼저 요청이 들어온 작업부터 처리해야하기 때문에 시작시간 순서대로 배열을 정렬한다.
+//		Arrays.sort(jobs, Comparator.comparingInt(job -> job.start));
+//
+//		// 큐를 이용하면 직관적으로 사용할 수 있다.
+//		Queue<Job> q = new LinkedList<>(Arrays.asList(jobs));
+//
+//		//시작할 수 있는 작업 중 가장 걸리는 시간이 짧게 걸리는 작업을 선행한다.
+//		PriorityQueue<Job> pq = new PriorityQueue<>(
+//				Comparator.comparingInt(job -> job.duration));
+//
+//		// 작업의 누적합과 현재시간을 나타내는 변수
+//		int exec = 0;
+//		int time = 0;
+//
+//
+//		//queue에 들어있는 작업은 아직 작업의 요청시간에 도달하지 못한 작업. pq에 들어있는 작업은 요청시간이 지낫지만 시작하지 못한 일
+//		while (!q.isEmpty() || !pq.isEmpty()) {
+//			// 가장 먼저 작업할 수 있는 작업 추출, 요청시간이 지난 작업을 pq추가한다.
+//
+//
+//			while (!q.isEmpty() && q.peek().start <= time) {
+//				pq.add(q.poll());
+//			}
+//			System.out.println(q.toString());
+////			System.out.println("exec : " + exec + " time : " + time);
+//			//pq가 비어있다면 시작할 수 있는 작업이 없다. 이때 q의 첫번째 작업까지 대기한다.
+//			if (pq.isEmpty()) {
+//				time = q.peek().start;
+//				continue;
+//			}
+//			System.out.println(pq.peek().toString());
+//			Job job = pq.poll();
+//			exec += time + job.duration - job.start;
+//			time += job.duration;
+//			System.out.println("exec : " + exec + " time : " + time);
+//		}
+//		// 총 수행시간을 작업갯수로 나눠 평균을 구한다.
+//		return exec / jobs.length;
+//	}
 
-
-	public static int solution(int[][] jobs) {
+	public static int solution1(int[][] jobs) {
 
 		int answer = 0;
 		int end = 0; // 수행되고난 직후의 시간
