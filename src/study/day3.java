@@ -18,29 +18,4 @@ public class day3 {
 		return false;
 	}
 
-
-//	public boolean divideArr(int[] nums, int m) {
-//
-//		boolean answer =false;
-//
-//		if (nums.length == 2 && Arrays.stream(nums).sum() >= m) {
-//			answer = true;
-//			return answer;
-//		}
-//
-//		for (int i = 0; i < nums.length - 1; i++) {
-//
-//			int[] subArray = Arrays.copyOfRange(nums,i, (nums.length-1)+i);
-//
-//			if (Arrays.stream(subArray)
-//					.sum() < m) {
-//				answer = false;
-//				continue;
-//			}
-//
-//			answer = divideArr(subArray, m);
-//		}
-//
-//		return answer;
-//	}
 }
