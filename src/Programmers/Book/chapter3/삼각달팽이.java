@@ -15,64 +15,7 @@ public class 삼각달팽이 {
 
     public static void main(String[] args) {
 
-//        System.out.println(solution(4));
-
-
-    }
-
-    public static int[] solution(int n) {
-
-        int[][] arr = new int[n][n];
-        int number = 1;
-
-        int x = 0;
-        int y = 0;
-
-        while (true) {
-            //아래로 이동
-            while (true) {
-                arr[y][x] = number++;
-                // ) 마지막으로 아래로 내려갈 경우 리턴할 수 있도록
-                if(y+1 == n|| arr[y+1][x] !=0) break;
-                y+=1;
-            }
-            if(x+1==n||arr[y][x+1] != 0 )break;
-            x+=1;
-
-            // 오른쪽으로 이동
-            while (true) {
-                arr[y][x] = number++;
-                if(x+1==n||arr[y][x+1] !=0) break;
-                x+=1;
-            }
-            if(arr[y-1][x-1] != 0) break;
-            x-=1;
-            y-=1;
-
-            // 왼쪽 위로 이동
-            while (true) {
-                arr[y][x] = number++;
-                if(arr[y-1][x-1]!=0) break;
-                x-=1;
-                y-=1;
-            }
-
-            if(y+1==n||arr[y+1][x]!=0) break;
-            y+=1;
-        }
-
-        int[] result = new int[number];
-
-        int index = 0;
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j <= i; j++) {
-                result[index++] = arr[i][j];
-            }
-        }
-
-
-        return result;
+        System.out.println(addSolution(4));
 
 
     }
@@ -109,6 +52,7 @@ public class 삼각달팽이 {
         }
 
         return result;
+
     }
 
 
