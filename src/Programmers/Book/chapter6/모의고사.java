@@ -17,75 +17,55 @@ public class 모의고사 {
 
 
 	public static void main(String[] args) {
+		모의고사 con = new 모의고사();
 
-		int[] arg = {1, 2, 3, 4, 5};
+		int[] arg = {1,3,2,4,2};
 
-	Arrays.stream(addsolution(arg)).forEach(System.out::println);
+
+		System.out.println(Arrays.toString(con.solution(arg)));
+
+		// 많이 맞춘 순서대로 반환. 똑같으면 앞순대로 리턴
+
 
 	}
 
+	/* 1. 배열에 수포자별로 맞은 정답을 입력한다.
+	   2. 수포의 정답과 주어진 정답 리스트를 비교한다. -
 
-	private static int getPicked(int person, int problem) {
-		int[] rule = supo[person]; // 각 수포자의 값을 배열에 셋팅
-		int index = problem % supo.length; // 찍고자하는 패턴을 순회하도록 인덱스값 셋팅
+	 */
 
-		return rule[index]; // 인덱스별 찍은 답을 리턴
+
+	public  int[] solution(int[] answers) {
+
+		int[] list = new int[supo.length];
+
+
+		for (int i = 0; i < list.length; i++) {
+			list[i] = getAnswer(i, answers);
+		}
+
+		int maxValue = 0;
+
+		for (int idx : list) {
+			maxValue = Math.max(maxValue, idx);
+		}
+
+		final int finmaxValue =maxValue;
+
+		return IntStream.range(0, 3).filter(i -> list[i] == finmaxValue).map(i -> i + 1).toArray();
 	}
 
-	public static int[] solution(int[] answers) {
+	private  int getAnswer(int i, int[] answers) {
 
-		int[] corrects = new int[3];
-		int max = 0;
+		int[] list = supo[i];
+		int count = 0;
 
-		for (int problem = 0; problem < answers.length; problem++) {
-			int answer = answers[problem];
+		for (int j = 0; j < list.length; j++) {
+			if(list[j] == answers[j%answers.length]) count++;
 
-			for (int person = 0; person < 3; person++) {
-				// 바람별로 돌고 인덱스별로
-				int picked = getPicked(person, problem);
-
-				if (answer == picked) { // 해당인덱스의 값과 정답이 일치하면
-					if (++corrects[person] > max) {
-						max = corrects[person];
-					}
-				}
-			}
 		}
 
-		final int maxCorrects = max;
-
-		return IntStream.range(0, 3)
-				.filter(i -> corrects[i] == maxCorrects)
-				.map(i -> i + 1)
-				.toArray();
-	}
-
-
-	////////////////
-	public static int[] addsolution(int[] answer) {
-	// 누가 가장 많이 맞췃는가
-		int[] corrects = new int[3];
-
-		for (int i = 0; i < supo.length-1; i++) {
-			System.out.println(i);
-			for (int j = 0; j < supo[i].length-1; j++) {
-				if(answer[i] == supo[i][j% answer.length]) corrects[i]++;
-			}
-		}
-
-		int max = 0;
-
-		for (int checkMax : corrects) {
-			max = Math.max(checkMax, max);
-		}
-
-		int finalMax = max;
-
-		return Arrays.stream(corrects)
-				.filter(s -> corrects[s] == finalMax)
-				.map(s->s+1)
-				.toArray();
-
+		return count;
 	}
 
 
