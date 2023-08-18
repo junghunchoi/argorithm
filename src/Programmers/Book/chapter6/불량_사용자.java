@@ -1,76 +1,71 @@
 package Programmers.Book.chapter6;
 
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/64064
 public class 불량_사용자 {
 
+	////////
+	String[] userIds;
+	String[] bannedIds;
+	HashSet<HashSet<String>> result = new HashSet<>();
+
 	public static void main(String[] args) {
 		불량_사용자 con = new 불량_사용자();
 		String[] userID = {"frodo", "fradi", "crodo", "abc123", "frodoc"};
-		String[] banID = {"fr*d*", "abc1**"};
-		con.solution(userID, banID);
+		String[] banID = {"abc1**", "fr***"};
+
+
+		System.out.println(con.solution(userID, banID)); // 우의 경우의 수를 반복한다.
 	}
-
-
-	static HashSet<HashSet<String>> answer;
 
 	public int solution(String[] user_id, String[] banned_id) {
-		answer = new HashSet<>();
 
-		dfs(new LinkedHashSet<>(), user_id, banned_id);
+		userIds = user_id;
+		bannedIds = banned_id;
 
+		dfs(new HashSet<>(), 0);
 
-		return answer.size();
+		return result.size();
 	}
 
-	private void dfs(HashSet<String> hs, String[] user_id, String[] banned_id) {
-		System.out.println("dfs in " + hs.toString());
-		System.out.println("answer : " + answer.toString());
+	void dfs(HashSet<String> set, int depth) { // 저장할 자료구조와 depth는 기본적으로 들어가야한다.
+		/*
+		1) 주어진 밴목록만큼 순회를 하면 끝낸다.
+		2) 주어진 userid만큼 반복을 한다
+		2-1) 밴리스트안에 이미 사용자 id가 들어있다면 반복 졸요
+		2-2) 주어진 제약조건에 부합하다면 dfs를 반복한다.
+		 */
 
-		int count = 0;
-
-		// Set의 사이즈가 제제목록과 동일하면
-		if (hs.size() == banned_id.length) {
-			//밴 리스트의 조건과 동일하면
-			if (isBanList(hs, banned_id)) {
-				answer.add(new HashSet<>(hs));
-			}
+		if (depth == bannedIds.length) {
+			result.add(set);
 			return;
 		}
-		for (String userID : user_id) {
-			System.out.println("userid : " + userID + " " + ++count);
-			if (hs.add(userID)) {
-				dfs(hs, user_id, banned_id);
-				hs.remove(userID);
+
+		for (int i = 0; i < userIds.length; i++) {
+			if (set.contains(userIds[i])) {
+				continue;
+			}
+
+			if (check(userIds[i], bannedIds[depth])) {
+				set.add(userIds[i]);
+				dfs(set, depth + 1);
+				set.remove(userIds[i]);
 			}
 		}
+
 	}
 
-	private static boolean isBanList(HashSet<String> hs, String[] banned_id) {
+	private boolean check(String userId, String bannedId) {
 
-		int idx = 0;
-
-		for (String userID : hs) {
-
-			String banID = banned_id[idx++];
-			// 길이가 다른 경우 틀린거지
-			if (userID.length() != banID.length()) {
-				return false;
-			}
-
-			for (int i = 0; i < banID.length(); i++) {
-				//*의 위치가 같으면 지나감
-				if (banID.charAt(i) == '*') {
-					continue;
-				}
-				//일단 다르면 리턴
-				if (userID.charAt(i) != banID.charAt(i)) {
-					return false;
-				}
-			}
+		if (userId.length() != bannedId.length()) {
+			return false;
 		}
+
+		for (int i = 0; i < bannedId.length(); i++) {
+			if (bannedId.charAt(i) != '*' && bannedId.charAt(i) != userId.charAt(i)) return false;
+		}
+
 		return true;
 	}
 }
