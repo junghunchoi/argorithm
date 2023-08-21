@@ -13,7 +13,7 @@ public class 가장_큰_수 {
 	public static void main(String[] args) {
 
 		가장_큰_수 cons = new 가장_큰_수();
-
+		System.out.println(cons.solution(new int[]{6,10,2}));
 	}
 
 	public String solution(int[] arr) {

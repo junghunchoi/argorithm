@@ -1,6 +1,7 @@
 package Programmers.Book.chapter6;
 
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -39,7 +40,7 @@ public class 수식의_최대화 {
 		for (int i = 0; i < precedences.length-1; i++) {
 			// 연산자 순서대로 계산하고 계산한 값을 넣어야함
 			// 순서대로?
-			answer = Math.max(answer, calculate(list, precedences[i]));
+			answer = Math.max(answer, calculate(new ArrayList<>(list), precedences[i]));
 
 		}
 
@@ -78,7 +79,7 @@ public class 수식의_최대화 {
 					list.add(i - 1, calcNum);
 					i -= 2;
 				}
-				
+
 			}
 
 

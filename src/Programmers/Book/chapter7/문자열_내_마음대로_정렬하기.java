@@ -19,8 +19,7 @@ public class 문자열_내_마음대로_정렬하기 {
 				.stream(arr)
 				.sorted((v1, v2) -> {
 					if (v1.charAt(n) != v2.charAt(n)) {
-						return v1.charAt(n) - v2.charAt(n); // 오름차순 정렬
-
+						return v1.charAt(n) - v2.charAt(n); // 오름차순
 					}
 					return v1.compareTo(v2);
 				})
