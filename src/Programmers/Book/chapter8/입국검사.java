@@ -5,8 +5,8 @@ import java.util.Arrays;
 //https://school.programmers.co.kr/learn/courses/30/lessons/43238
 public class 입국검사 {
 
-	/* 2023.07.24
-
+	/* 1) 2023.07.24
+	   2) 2023.08.22
 	 */
 
 	public static void main(String[] args) {
@@ -31,8 +31,6 @@ public class 입국검사 {
 			for (int i = 0; i < times.length; i++) {
 				sum += mid / times[i]; // 총 걸리는 시간 / 심사관 시간 = 주어진 시간동안 해결할 수 있는 심시관별 사람 수
 			}
-
-			System.out.println("left : " + left + " right : " + right + " sum : " + sum);
 
 			if (sum < n) { // 해야할 인원보다 심사처리 못함 -> 시간 더 필요
 				left = mid + 1;

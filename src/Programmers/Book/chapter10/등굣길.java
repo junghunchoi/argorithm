@@ -5,7 +5,7 @@ import java.util.Arrays;
 // https://school.programmers.co.kr/learn/courses/30/lessons/42898
 public class 등굣길 {
 
-	/* 1) 2023.07.26
+	/* 1) 2023.08.22
 
 	 */
 
@@ -13,20 +13,14 @@ public class 등굣길 {
 	// 물웅덩이를 만났을 경우 다른 곳으로 움직여야한다.
 	//
 
-	public static void main(String[] args) {
-
-		등굣길 cons = new 등굣길();
-		cons.solution(4, 3, new int[][]{{2, 3},{4,2}});
-
-	}
-
 	private final int[][] mem = new int[101][101];
 
+	public static void main(String[] args) {
+		등굣길 cons = new 등굣길();
+		System.out.println(cons.solution(4, 3, new int[][]{{2, 2}}));
+	}
+
 	private int solution(int m, int n, int[][] puddles) {
-
-		/* 배열 및 물 웅덩
-		* */
-
 		for (int[] i : mem) {
 			Arrays.fill(i,-1);
 		}
@@ -34,16 +28,8 @@ public class 등굣길 {
 		boolean[][] isPuddle = new boolean[n + 1][m + 1];
 
 		for (int[] p : puddles) {
-			System.out.println("p[1] : " + p[1]  + "p[0]" + p[0] );
 			isPuddle[p[1]][p[0]] = true;
 		}
-
-//		for (boolean[] subArray : isPuddle) {
-//			for (boolean b : subArray) {
-//				System.out.print(b ? 1 : 0);
-//			}
-//			System.out.println();
-//		}
 		return count(1, 1, m, n, isPuddle);
 	}
 
@@ -64,17 +50,9 @@ public class 등굣길 {
 
 		int total = count(x + 1, y, w, h, isPuddle) + count(x, y + 1, w, h, isPuddle);
 
+		System.out.println("total : " + total + " x : " + x + " y : " + y);
+
 		return mem[x][y] = total % 1000000007;
-	}
-
-
-	private int solution1(int m, int n, int[][] puddles) {
-
-		int answer = 0 ;
-
-
-
-		return answer%1000000007;
 	}
 
 }
