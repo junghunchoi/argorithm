@@ -6,6 +6,10 @@ import java.util.*;
 //https://school.programmers.co.kr/learn/courses/30/lessons/42586
 public class 기능개발 {
 
+	/*
+	1) 2023.08.24
+	 */
+
 	public static void main(String[] args) {
 
 		// 앞의 기능이 먼저 구현이 되면 빼기
@@ -16,33 +20,23 @@ public class 기능개발 {
 
 
 	public static int[] solution(int[] progress, int[] speeds) {
-		
-		// 나눴을 때 나머지가 5 10 1 1 20
-		//큐를 왜쓰는거야?
-		
+		List<Integer> list = new ArrayList<>();
 		Queue<Integer> queue = new LinkedList<>();
-		ArrayList<Integer> arrayList = new ArrayList<>();
 
+		while (queue.isEmpty()) {
+			for (int i = 0; i < progress.length; i++) {
+				double remain = (100 - progress[i]) / (double) speeds[i];
+				int day =(int) Math.ceil(remain);
 
-		for (int i = 0; i < progress.length; i++) {
-			double remain = (100 - progress[i]) / (double) speeds[i];
-			int day =(int) Math.ceil(remain);
+				if (!queue.isEmpty() && queue.peek() < day) {
+					list.add(queue.size());
+					queue.clear();
+				}
 
-
-			if (!queue.isEmpty() && queue.peek() < day) {// 값이 존재하는데
-				arrayList.add(queue.size());
-				queue.clear();
+				queue.offer(day);
 			}
-
-
-			queue.offer(day);
-
-
 		}
-		arrayList.add(queue.size());
-		return arrayList.stream().mapToInt(Integer::intValue).toArray();
-
+		list.add(queue.size());
+		return list.stream().mapToInt(i->i).toArray();
 	}
-
-
 }
