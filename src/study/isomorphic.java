@@ -4,6 +4,7 @@ package study;
 import java.util.HashMap;
 import java.util.Map;
 
+//https://leetcode.com/problems/isomorphic-strings/
 public class isomorphic {
 
 

@@ -1,4 +1,4 @@
-package study;
+package study.solved;
 
 public class leetcode8015 {
 
