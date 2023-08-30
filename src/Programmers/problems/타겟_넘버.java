@@ -2,7 +2,7 @@ package Programmers.problems;
 
 //https://school.programmers.co.kr/learn/courses/30/lessons/43165
 //카테고리 : DFS
-public class TargetNumber {
+public class 타겟_넘버 {
 
     static int answer;
 

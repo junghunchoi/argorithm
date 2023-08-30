@@ -1,4 +1,4 @@
-package study;
+package study.implement;
 
 //https://leetcode.com/problems/minimum-penalty-for-a-shop/
 public class leetcode2483 {
