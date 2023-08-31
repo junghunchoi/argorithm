@@ -1,19 +1,20 @@
-package study;
+package study.structure;
 
 
 import java.util.HashMap;
 import java.util.Map;
 
 //https://leetcode.com/problems/isomorphic-strings/
-public class isomorphic {
+public class leet205 {
 
+	public static void main(String[] args) {
+		leet205 co = new leet205();
+
+		System.out.println(co.solution("bbbaaaba","aaabbbba"));
+	}
 
 	public boolean solution(String s, String t) {
-
-		// 같은 순서로 같아야된다.
-
 		Map<Character, Character> map = new HashMap<>();
-
 
 		for (int i = 0; i < s.length(); i++) {
 			char sindex = s.charAt(i);
@@ -30,6 +31,5 @@ public class isomorphic {
 			}
 		}
 		return true;
-
 	}
 }

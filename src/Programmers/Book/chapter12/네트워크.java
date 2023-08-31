@@ -11,7 +11,7 @@ public class 네트워크 {
 	public static void main(String[] args) {
 		네트워크 con = new 네트워크();
 
-		System.out.println(con.solution(3, new int[][]{{1,1,0},{1,1,0},{0,0,1}}));
+		System.out.println(con.solution(3, new int[][]{{1,1,0},{1,1,1},{0,1,1}})); // 1
 	}
 
 
@@ -22,6 +22,7 @@ public class 네트워크 {
 
 		for (int i = 0; i < n; i++) {
 			if(isVisited[i]) continue;
+
 			visitAll(i,computers,isVisited);
 			answer++;
 		}
@@ -56,6 +57,5 @@ public class 네트워크 {
 			}
 			System.out.println(stack.toString());
 		}
-
 	}
 }

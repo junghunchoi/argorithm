@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
+//https://www.acmicpc.net/problem/2493
 public class 탑 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
