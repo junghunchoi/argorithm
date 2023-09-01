@@ -8,7 +8,7 @@ public class leet1326 {
 	public static void main(String[] args) {
 		leet1326 con = new leet1326();
 
-		System.out.println(con.minTaps(5, new int[]{3,4,1,1,0,0})); // 1
+		System.out.println(con.minTaps(4, new int[]{2,2,1,1,0})); // 1
 	}
 
 	public int minTaps(int n, int[] ranges) {
