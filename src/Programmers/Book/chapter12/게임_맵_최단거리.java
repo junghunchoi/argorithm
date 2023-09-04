@@ -74,13 +74,11 @@ public class 게임_맵_최단거리 {
     }
 
     static class Node {
-
         public Node(int row, int col, int move) {
             this.row = row;
             this.col = col;
             this.move = move;
         }
-
         @Override
         public String toString() {
             return "Node{" + "row=" + row + ", col=" + col + ", move=" + move + '}';
