@@ -21,7 +21,7 @@ public class leet2816 {
 
 	}
 
-	public class ListNode {
+	public static class ListNode {
 		int val;
 		ListNode next;
 
